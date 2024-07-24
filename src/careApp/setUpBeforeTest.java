@@ -43,7 +43,7 @@ public class setUpBeforeTest {
     var options = new BaseOptions()
         .amend("appium:platformName", "Android")
         .amend("appium:deviceName", "MK")
-        .amend("appium:app", "C:\\Users\\MohammadAlkeswani\\eclipse-workspace\\appium\\src\\Care.apk")
+        .amend("appium:app", "C:\\Users\\MohammadAlkeswani\\eclipse-workspace\\CareApplicationUsingAppium\\src\\careApp\\Care.apk")
         .amend("appium:newCommandTimeout", 3600)
         .amend("appium:connectHardwareKeyboard", true);
 
