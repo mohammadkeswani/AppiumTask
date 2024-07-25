@@ -23,8 +23,7 @@ public class LoginSuccessfully extends setUpBeforeTest{
 			driver.findElement(By.id("ats.ksa.care.patient.dev:id/btn_login")).click();
 			String patientName = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"ats.ksa.care.patient.dev:id/tv_patient_name\"]")).getText();
 			System.out.println(patientName);
-			Assert.assertEquals(patientName, "Mohammad Alrajehi");			
-	
+			Assert.assertEquals(patientName, "Mohammad Alrajehi");
 		}
 
 }

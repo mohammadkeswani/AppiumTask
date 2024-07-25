@@ -20,7 +20,7 @@ public class switchLanguage extends setUpBeforeTest {
 				driver.findElement(By.id("ats.ksa.care.patient.dev:id/edt_password")).sendKeys("123456");
 				driver.findElement(By.id("ats.ksa.care.patient.dev:id/btn_login")).click();
 	// forloop for change the language 3 times.
-		    for (int i =0; i<3; i++) {
+		    for (int i =0; i<=3; i++) {
 			 String patientName = driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"ats.ksa.care.patient.dev:id/tv_patient_name\"]")).getText();
 	// if the application language English will print PatientName in English and Change the language to Arabic
 			 if (patientName.contains("Mohammad Alrajehi")) {

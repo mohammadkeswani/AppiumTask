@@ -10,7 +10,7 @@ import junit.framework.Assert;
 
 public class resetPassword extends setUpBeforeTest {
 	
-	String newPassword = "1234567";
+	String newPassword = "12345678";
 	String fileNo = "57695";
 	
 	  // patient reset password using fileNo and mobileNo
