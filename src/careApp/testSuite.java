@@ -3,6 +3,8 @@ package careApp;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
+
+
 @Suite
 @SelectClasses({ 
 	cannotForgotPasswordProccess.class,
@@ -13,9 +15,9 @@ import org.junit.platform.suite.api.Suite;
 	 guestBookAppointment.class,
 	 doctorLogin.class,
 	 doctorInvalidLogin.class,
-	 
+	 invalidDoctorSearch.class,
+	 doctorsearchforPatients.class,
 	})
 public class testSuite {
-	
 
 }

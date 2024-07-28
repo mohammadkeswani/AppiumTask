@@ -2,16 +2,15 @@ package careApp;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-
 public class cannotForgotPasswordProccess extends setUpBeforeTest {
 	
-
 	@Test
 	public void cannotChangePassword() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));

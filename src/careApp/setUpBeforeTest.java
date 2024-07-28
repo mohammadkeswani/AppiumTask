@@ -34,7 +34,44 @@ import junit.framework.Assert;
 //@TestMethodOrder(OrderAnnotation.class)
 
 public class setUpBeforeTest {	
+	
+	ExtentReports extent;
+
+	//Create report
+		public static ExtentReports report() {
+
+			 String path = System.getProperty("user.dir") + "/reports/index.html";
+				ExtentSparkReporter reporter = new ExtentSparkReporter(path);
+				reporter.config().setReportName("Mohammad Alkeswani Report");
+				reporter.config().setDocumentTitle("Title Alkeswani");
+				ExtentReports extent = new ExtentReports();
+				extent.attachReporter(reporter);
+				extent.setSystemInfo("Tester", "Alkeswani");
+				return extent;
+			
+		}
+		
+		// ScreenShot
+		public String getScreenshot(String TestCaseName , WebDriver driver) throws IOException {
+			TakesScreenshot src = ((TakesScreenshot) driver);
+			
+			File SrcFile = src.getScreenshotAs((OutputType.FILE));
+
+			File Dest = new File (System.getProperty ("user.dir") + "//reports//" + TestCaseName + ".png");
+			
+	          FileUtils.copyFile (SrcFile,Dest);
+			return System.getProperty ("user.dir") + "//reports//" + TestCaseName + ".png";
+		}
+	
+	
   public AndroidDriver driver;
+  
+  
+  
+  
+  
+  
+  
   // setup to connect with server and emulator 
   @BeforeEach
   public void setUp() throws InterruptedException {

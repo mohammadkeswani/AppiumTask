@@ -6,16 +6,20 @@ import java.time.Duration;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class doctorLogin extends setUpBeforeTest{
+public class invalidDoctorSearch extends setUpBeforeTest {
 	String userName = "hms";
 	String password = "1234567";
-	String expectedDoctorName = "Ali Mohammad";
-	// doctor Login using a valid information 
-	@Test
-	public void DoctorLogin() {
+	String ptFileNo = "2541";
+	String expectedAlertMessage = "Not found!";
+	
+	@Test()
+	public void doctorsearchforPatients() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("ats.ksa.care.patient.dev:id/card_doctor")));
@@ -31,10 +35,16 @@ public class doctorLogin extends setUpBeforeTest{
 		//fill verification code 
 		driver.findElement(By.xpath("//android.widget.EditText")).sendKeys("2369");
 		driver.findElement(By.id("ats.ksa.care.patient.dev:id/btn_forget")).click();
-		String docName = driver.findElement(By.id("ats.ksa.care.patient.dev:id/tv_dr_name")).getText();
-		System.out.println(docName);
-		assertEquals(docName, expectedDoctorName);
-	
+		// search for patient
+		Actions action = new Actions(driver);
+		WebElement search =	driver.findElement(By.id("ats.ksa.care.patient.dev:id/edt_patient_id"));
+		Thread.sleep(1000);
+		Actions action1 = new Actions(driver);
+        action1.moveToElement(search).sendKeys(ptFileNo).sendKeys(Keys.ENTER).build().perform();
+		// validate if the patient after the search has the same fileNo no which i searched on 
+        String actulAleartMessage =	driver.findElement(By.xpath("//android.widget.Toast[@text=\"Not found!\"]")).getText();
+        assertEquals(actulAleartMessage, expectedAlertMessage);
 	}
+
 
 }
