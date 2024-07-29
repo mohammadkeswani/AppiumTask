@@ -4,13 +4,13 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public class invalidDoctorSearch extends setUpBeforeTest {
 	String userName = "hms";
@@ -43,6 +43,8 @@ public class invalidDoctorSearch extends setUpBeforeTest {
         action1.moveToElement(search).sendKeys(ptFileNo).sendKeys(Keys.ENTER).build().perform();
 		// validate if the patient after the search has the same fileNo no which i searched on 
         String actulAleartMessage =	driver.findElement(By.xpath("//android.widget.Toast[@text=\"Not found!\"]")).getText();
+		System.out.println("**************************");
+		System.out.println("this message will appear because this file no is invalid" +"->->->->->->->->-" +actulAleartMessage +"-<-<-<-<-<-<-<-<-");
         assertEquals(actulAleartMessage, expectedAlertMessage);
 	}
 

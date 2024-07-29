@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.util.Random;
 
 import org.openqa.selenium.By;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 
 import junit.framework.Assert;
 

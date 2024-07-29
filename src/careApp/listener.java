@@ -27,20 +27,30 @@ public class listener extends setUpBeforeTest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-    	extenttest.get().fail(result.getThrowable());
+    	 extenttest.get().fail(result.getThrowable());
 
-        // Get the WebDriver instance directly from the test class
-        WebDriver driver = ((setUpBeforeTest) result.getInstance()).driver;
+         // Get the WebDriver instance directly from the test class
+         setUpBeforeTest testInstance = (setUpBeforeTest) result.getInstance();
+         WebDriver driver = testInstance.driver;
 
-        String filePath = null;
-        try {
-            filePath = getScreenshot(result.getMethod().getMethodName(), driver);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        extenttest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
-    
-    }
+         if (driver == null) {
+             extenttest.get().log(Status.FAIL, "WebDriver instance was null.");
+             return;
+         }
+
+         String filePath = null;
+         try {
+             filePath = testInstance.getScreenshot(result.getMethod().getMethodName(), driver);
+         } catch (IOException e) {
+             e.printStackTrace();
+             extenttest.get().log(Status.FAIL, "Failed to capture screenshot: " + e.getMessage());
+         }
+         if (filePath != null) {
+             extenttest.get().addScreenCaptureFromPath(filePath, result.getMethod().getMethodName());
+         } else {
+             extenttest.get().log(Status.FAIL, "Screenshot path is null.");
+         }
+     }
 
     @Override
     public void onTestSkipped(ITestResult result) {}

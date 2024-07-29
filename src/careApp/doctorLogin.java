@@ -4,10 +4,10 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public class doctorLogin extends setUpBeforeTest{
 	String userName = "hms";
@@ -32,7 +32,9 @@ public class doctorLogin extends setUpBeforeTest{
 		driver.findElement(By.xpath("//android.widget.EditText")).sendKeys("2369");
 		driver.findElement(By.id("ats.ksa.care.patient.dev:id/btn_forget")).click();
 		String docName = driver.findElement(By.id("ats.ksa.care.patient.dev:id/tv_dr_name")).getText();
-		System.out.println(docName);
+		System.out.println("**************************");
+		System.out.println("Doctor login successfully and the doctor name is " + docName);
+		System.out.println("**************************");
 		assertEquals(docName, expectedDoctorName);
 	
 	}

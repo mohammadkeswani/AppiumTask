@@ -11,11 +11,7 @@ import java.time.Duration;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.ClassOrderer.OrderAnnotation;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+
 import org.junit.runner.manipulation.Alphanumeric;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
@@ -23,8 +19,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.BeforeTest;
 
 import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -36,8 +34,8 @@ import junit.framework.Assert;
 public class setUpBeforeTest {	
 	
 	ExtentReports extent;
-
-	//Create report
+	
+	//  Create report
 		public static ExtentReports report() {
 
 			 String path = System.getProperty("user.dir") + "/reports/index.html";
@@ -61,20 +59,17 @@ public class setUpBeforeTest {
 			
 	          FileUtils.copyFile (SrcFile,Dest);
 			return System.getProperty ("user.dir") + "//reports//" + TestCaseName + ".png";
-		}
+		} 
+		
 	
-	
-  public AndroidDriver driver;
-  
-  
-  
-  
-  
-  
-  
+  public static AndroidDriver driver;
+
   // setup to connect with server and emulator 
-  @BeforeEach
-  public void setUp() throws InterruptedException {
+  @BeforeTest
+  public  void setUp() throws InterruptedException {
+	   
+	  
+	  
     var options = new BaseOptions()
         .amend("appium:platformName", "Android")
         .amend("appium:deviceName", "MM")
@@ -89,6 +84,10 @@ public class setUpBeforeTest {
     } catch (MalformedURLException e) {
       e.printStackTrace();
     }
+    
+  }
+  public static AndroidDriver getDriver() {
+      return driver;
   }
 
 

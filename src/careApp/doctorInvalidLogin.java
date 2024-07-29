@@ -4,10 +4,10 @@ import static org.testng.Assert.assertEquals;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
 
 public class doctorInvalidLogin extends setUpBeforeTest {
 	String invalidUsername = "Mohammad";
@@ -29,6 +29,9 @@ public class doctorInvalidLogin extends setUpBeforeTest {
 	driver.findElement(By.id("ats.ksa.care.patient.dev:id/btn_login")).click();
 	// validate alert message 
 	String actulInvalidMessage = driver.findElement(By.xpath("//android.widget.Toast[@text=\"Invalid username or password!\"]")).getText();
+	System.out.println("**************************");
+	System.out.println("Doctor cannot login beacuse he user invalid Data for login");
+	System.out.println("**************************");
 	assertEquals(actulInvalidMessage, expectedMessage);
 	}
 }

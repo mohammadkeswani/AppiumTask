@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+	<listeners>
+		<listener class-name="careApp.listener"></listener>
+	</listeners>
+
+
+	<test name="cannotChangePassword">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.cannotForgotPasswordProccess" />
+		</classes>
+	</test>
+
+	<test name="invalidLogin">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.invalidLogin" />
+		</classes>
+	</test>
+
+	<test name="Loginsuccessfully">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.LoginSuccessfully" />
+		</classes>
+	</test>
+
+	<test thread-count="5" name="resetPassword">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.resetPassword" />
+		</classes>
+	</test> <!--
+	Test -->
+
+	<test name="switchLanguage">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.switchLanguage" />
+		</classes>
+	</test>
+
+	<test name="guestBookAppointment">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.guestBookAppointment" />
+		</classes>
+	</test>
+
+	<test name="invalidDoctorLogin">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.doctorInvalidLogin" />
+		</classes>
+	</test>
+
+
+	<test name="doctorLogin">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.doctorLogin" />
+		</classes>
+	</test>
+
+	<test name="invalidDoctorSearch">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.invalidDoctorSearch" />
+		</classes>
+	</test>
+
+
+	<test name="doctorSerachForAPatient">
+		<classes>
+			<class name="careApp.setUpBeforeTest" />
+			<class name="careApp.doctorsearchforPatients" />
+		</classes>
+	</test>
+
+
+</suite> <!--
+Suite -->
